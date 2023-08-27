@@ -17,7 +17,7 @@ public class Device {
     private int hashcode;
     protected List<Sensor> sensors;
     protected final int conduct;
-    
+
     public Device(String id, int conduct, double latitude, double longitude, List<Sensor> sensors) {
         this.id = id;
         this.conduct = conduct;
@@ -29,6 +29,10 @@ public class Device {
 
     public String getId() {
         return this.id;
+    }
+
+    public int getConduct() {
+      return conduct;
     }
 
     public double getLatitude() {
