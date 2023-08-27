@@ -7,7 +7,7 @@ import java.util.Optional;
 
 /**
  *
- * @author Uellington Damasceno
+ * @author Uellington Damasceno e Allan Capistrano
  */
 public class Device {
 
@@ -16,9 +16,11 @@ public class Device {
     protected final double longitude;
     private int hashcode;
     protected List<Sensor> sensors;
+    protected final int conduct;
     
-    public Device(String id, double latitude, double longitude, List<Sensor> sensors) {
+    public Device(String id, int conduct, double latitude, double longitude, List<Sensor> sensors) {
         this.id = id;
+        this.conduct = conduct;
         this.latitude = latitude;
         this.longitude = latitude;
         this.sensors = sensors;

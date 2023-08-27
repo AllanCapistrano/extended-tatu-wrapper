@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 /**
  *
- * @author Uellington Damasceno
+ * @author Uellington Damasceno e Allan Capistrano
  */
 public class DeviceWrapper {
 
@@ -37,19 +37,21 @@ public class DeviceWrapper {
 
     public static Device toDevice(Map device) {
         String id = (String) device.getOrDefault("id", INVALID_DEVICE);
+        Integer conduct = (Integer) device.getOrDefault("conduct", 0);
         Double longitude = (Double) device.getOrDefault("longitude", 0);
         Double latitude = (Double) device.getOrDefault("latitude", 0);
         List sensors = (ArrayList) device.getOrDefault("sensors", Collections.emptyList());
         List<Sensor> allSensors = SensorWrapper.getAllSensors(sensors);
-        return new Device(id, longitude, latitude, allSensors);
+        return new Device(id, conduct, longitude, latitude, allSensors);
     }
 
     public static Device toDevice(JSONObject device) {
         String id = device.optString("id", INVALID_DEVICE);
+        Integer conduct = (Integer) device.optInt("conduct", 0);
         double longitude = device.optDouble("longitude", 0);
         double latitude = device.optDouble("latitude", 0);
         List<Sensor> sensors = SensorWrapper.getAllSensors(device.getJSONArray("sensors"));
-        return new Device(id, longitude, latitude, sensors);
+        return new Device(id, conduct, longitude, latitude, sensors);
     }
 
     public static String toJSON(Device device) {
