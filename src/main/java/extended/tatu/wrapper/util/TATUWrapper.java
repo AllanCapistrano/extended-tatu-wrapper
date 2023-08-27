@@ -46,13 +46,14 @@ public final class TATUWrapper {
                 .toString();
     }
 
-    public static String buildGetMessageResponse(String deviceName, String sensorName, Object value) {
+    public static String buildGetMessageResponse(String deviceName, String deviceConduct, String sensorName, Object value) {
         JSONObject response = new JSONObject();
         JSONObject header = new JSONObject();
         JSONObject body = new JSONObject();
 
         header.put("NAME", deviceName);
         body.put(sensorName, value);
+        body.put("CONDUCT", deviceConduct);
         response.put("METHOD", "GET");
         response.put("CODE", "POST");
         response.put("HEADER", header);
